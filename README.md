@@ -27,3 +27,12 @@ npm run art       # regenerate placeholder artwork in public/art/
 1. Drop images into `public/` and point `cover` and each stage `image` in `src/content.ts` at them. Dark images with room for white text work best for the hero.
 2. Each project has three stages, `Ideation`, `Process`, `Product`. The Works section pins one viewport per stage and cross-fades the image while the copy changes.
 3. Items marked `PLACEHOLDER` in `src/content.ts` are waiting on content.
+
+## Deploy
+
+Hosted on Vercel. `public/art/` is regenerated on every build by the `prebuild`
+script, so the generated SVGs do not need to be uploaded with a manual deploy.
+
+```
+npm run build     # runs gen-art, then tsc and vite
+```
