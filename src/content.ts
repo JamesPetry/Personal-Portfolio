@@ -30,7 +30,15 @@ export const site = {
 };
 
 export const hero = {
-  image: '/art/hero.svg',
+  /* Drop a render at public/hero.jpg and it is used automatically.
+     Until then the generated artwork behind it shows through. */
+  image: '/hero.jpg',
+  fallback: '/art/hero.svg',
+  /* 'light' suits a pale render (white building, bright sky); 'dark' suits a dark image.
+     It only sets how strong a scrim sits under the white text. */
+  tone: 'light' as 'light' | 'dark',
+  /* Portrait images are cropped on wide screens; this picks the part that is kept. */
+  focus: '50% 38%',
   statement:
     'I build computational tools inside architectural practice, for the workflows no commercial software quite fits, and make them something a practitioner can trust.',
   meta: [

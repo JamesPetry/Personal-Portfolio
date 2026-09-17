@@ -24,9 +24,13 @@ npm run art       # regenerate placeholder artwork in public/art/
 
 ## Swapping in real work
 
-1. Drop images into `public/` and point `cover` and each stage `image` in `src/content.ts` at them. Dark images with room for white text work best for the hero.
-2. Each project has three stages, `Ideation`, `Process`, `Product`. The Works section pins one viewport per stage and cross-fades the image while the copy changes.
-3. Items marked `PLACEHOLDER` in `src/content.ts` are waiting on content.
+1. **Hero.** Save the render as `public/hero.jpg`. Nothing else to change: it is picked up
+   automatically, and the generated artwork shows through until the file exists. Set
+   `hero.tone` in `src/content.ts` to `'light'` for a pale render or `'dark'` for a dark one,
+   and `hero.focus` to choose which part of a portrait image survives the crop on wide screens.
+2. Drop other images into `public/` and point `cover` and each stage `image` in `src/content.ts` at them.
+3. Each project has three stages, `Ideation`, `Process`, `Product`. The Works section pins one viewport per stage and cross-fades the image while the copy changes.
+4. Items marked `PLACEHOLDER` in `src/content.ts` are waiting on content.
 
 ## Deploy
 

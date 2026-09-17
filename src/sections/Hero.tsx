@@ -30,9 +30,18 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="top" ref={root} className="hero" data-label="Home">
-      <div className="hero__pic"><img ref={img} src={hero.image} alt="" /></div>
+    <section id="top" ref={root} className={`hero hero--${hero.tone}`} data-label="Home">
+      <div className="hero__pic" style={{ backgroundImage: `url(${hero.fallback})` }}>
+        <img
+          ref={img}
+          src={hero.image}
+          alt=""
+          style={{ objectPosition: hero.focus }}
+          onError={(e) => { e.currentTarget.style.opacity = '0'; }}
+        />
+      </div>
       <div className="hero__shade" />
+      <div className="hero__vignette" />
       <div className="hero__meta frame label">
         {hero.meta.map((m) => (
           <div key={m.k} className="hero__kv"><span className="hero__k">{m.k}</span><span>{m.v}</span></div>
