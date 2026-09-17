@@ -36,7 +36,7 @@
 /* Holds the mid-page metadata row off a bright sky without banding. */
 .hero--light .hero__shade::before {
   content: ''; position: absolute; left: 0; right: 0; top: 38%; height: 18%;
-  background: linear-gradient(to bottom, transparent, rgba(18,18,18,0.34) 45%, transparent);
+  background: linear-gradient(to bottom, transparent, rgba(18,18,18,0.46) 45%, transparent);
 }
 .hero__vignette { position: absolute; inset: 0; pointer-events: none; }
 .hero--light .hero__vignette {
@@ -44,14 +44,28 @@
   mix-blend-mode: multiply;
 }
 .hero__meta { position: absolute; left: 0; right: 0; top: 44%; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-2); }
-.hero__kv { display: flex; flex-direction: column; gap: 8px; }
+.hero__kv { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.hero__kv > span:last-child { white-space: normal; }
 .hero__k { opacity: 0.6; }
 .hero__kv--link { justify-self: end; text-align: right; }
 .hero__foot { position: absolute; left: 0; right: 0; bottom: var(--s-4); display: grid; grid-template-columns: minmax(0, 46ch) 1fr; align-items: end; gap: var(--s-3); }
+@media (max-width: 720px) {
+  .hero--light .hero__shade::before { top: 8%; height: 14%; }
+}
 .hero__text { font-weight: 400; letter-spacing: -0.02em; line-height: 1.15; font-size: clamp(1.125rem, 0.9rem + 1.2vw, 1.9rem); }
 .hero__corner { display: flex; flex-direction: column; gap: 8px; text-align: right; opacity: 0.85; }
 @media (max-width: 720px) {
-  .hero__meta { grid-template-columns: 1fr 1fr; top: 34%; }
+  /* A phone fits the nav, the statement and one line of project metadata, and no
+     more. Year and type are detail the desktop layout has room for; here they go. */
+  .hero__meta {
+    grid-template-columns: 1fr;
+    gap: var(--s-1);
+    top: 84px; bottom: auto;
+  }
+  .hero__kv { flex-direction: row; justify-content: space-between; align-items: baseline; gap: var(--s-2); }
+  .hero__kv:nth-child(2), .hero__kv:nth-child(3) { display: none; }
+  .hero__kv > span:last-child { text-align: right; }
+  .hero__kv--link { text-align: left; }
   .hero__foot { grid-template-columns: 1fr; }
   .hero__corner { text-align: left; }
 }
