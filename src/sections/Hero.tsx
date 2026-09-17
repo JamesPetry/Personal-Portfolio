@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { hero, site } from '../content';
 import { gsap, reduced } from '../lib/motion';
 import Reveal from '../lib/Reveal';
@@ -6,6 +6,8 @@ import Reveal from '../lib/Reveal';
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
   const img = useRef<HTMLImageElement>(null);
+  // Try each candidate filename in turn; when all fail the generated artwork shows through.
+  const [src, setSrc] = useState(0);
 
   useLayoutEffect(() => {
     const el = root.current!, pic = img.current!;
@@ -34,10 +36,10 @@ export default function Hero() {
       <div className="hero__pic" style={{ backgroundImage: `url(${hero.fallback})` }}>
         <img
           ref={img}
-          src={hero.image}
+          src={hero.image[src]}
           alt=""
-          style={{ objectPosition: hero.focus }}
-          onError={(e) => { e.currentTarget.style.opacity = '0'; }}
+          style={{ objectPosition: hero.focus, opacity: src < hero.image.length ? 1 : 0 }}
+          onError={() => setSrc((i) => i + 1)}
         />
       </div>
       <div className="hero__shade" />

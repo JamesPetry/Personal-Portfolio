@@ -30,9 +30,10 @@ export const site = {
 };
 
 export const hero = {
-  /* Drop a render at public/hero.jpg and it is used automatically.
-     Until then the generated artwork behind it shows through. */
-  image: '/hero.jpg',
+  /* Drop a render into public/ named `hero`, in any of these formats, and it is
+     used automatically. The first one that loads wins; until one exists, the
+     generated artwork behind it shows through. */
+  image: ['/hero.jpg', '/hero.jpeg', '/hero.png', '/hero.webp', '/hero.avif'],
   fallback: '/art/hero.svg',
   /* 'light' suits a pale render (white building, bright sky); 'dark' suits a dark image.
      It only sets how strong a scrim sits under the white text. */
