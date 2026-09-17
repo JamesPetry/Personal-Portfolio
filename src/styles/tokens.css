@@ -1,0 +1,35 @@
+/* Design tokens — read from Figma "Design Style" (Inter, -5% tracking, #1e1e1e)
+   and the reference layout (white paper, edge-pinned micro labels, huge caps). */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #1e1e1e;
+  --paper: #ffffff;
+  --mute: #7d7d79;
+  --line: rgba(30, 30, 30, 0.14);
+  --img: #161616;
+
+  --font: 'Inter', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  /* type scale */
+  --t-label: 0.6875rem;                     /* 11px micro labels */
+  --t-body: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);          /* 16 → 24 */
+  --t-lead: clamp(1.375rem, 1rem + 1.6vw, 2.5rem);        /* 22 → 40 */
+  --t-name: clamp(2.5rem, 1.5rem + 5vw, 6rem);            /* 40 → 96 */
+  --t-display: clamp(2.75rem, 0.5rem + 9.4vw, 11rem);     /* 44 → 176 */
+
+  --track-display: -0.05em;
+  --track-body: -0.02em;
+  --track-label: 0.08em;
+
+  /* rhythm */
+  --gutter: clamp(16px, 2.4vw, 40px);
+  --s-1: clamp(8px, 0.8vw, 12px);
+  --s-2: clamp(16px, 1.6vw, 24px);
+  --s-3: clamp(32px, 3.2vw, 48px);
+  --s-4: clamp(64px, 6.4vw, 96px);
+  --s-5: clamp(112px, 12vw, 200px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+}

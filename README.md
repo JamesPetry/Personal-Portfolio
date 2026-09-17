@@ -1,32 +1,29 @@
-# React + TypeScript + Vite
+# James Petry — computational design portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+One-page portfolio. Vite + React 19 + TypeScript, GSAP ScrollTrigger, Lenis smooth scroll. No UI framework, no Tailwind.
 
-Currently, two official plugins are available:
+## Run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # static output in dist/
+npm run art       # regenerate placeholder artwork in public/art/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Where things live
+
+| What | File |
+| --- | --- |
+| All copy, projects, tools, contact details | `src/content.ts` |
+| Design tokens (type scale, tracking, spacing, colours) | `src/styles/tokens.css` |
+| Section layout | `src/styles/sections.css` |
+| Sections, in page order | `src/sections/Hero, Practice, Works, Method, Cta, Footer` |
+| Text reveal, figure reveal, smooth scroll | `src/lib/` |
+| Cursor and CAD-style readout overlay | `src/components/` |
+
+## Swapping in real work
+
+1. Drop images into `public/` and point `cover` and each stage `image` in `src/content.ts` at them. Dark images with room for white text work best for the hero.
+2. Each project has three stages, `Ideation`, `Process`, `Product`. The Works section pins one viewport per stage and cross-fades the image while the copy changes.
+3. Items marked `PLACEHOLDER` in `src/content.ts` are waiting on content.

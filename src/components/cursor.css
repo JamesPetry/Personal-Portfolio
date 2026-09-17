@@ -1,0 +1,78 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  color: #fff;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+.cursor__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cursor--link .cursor__ring {
+  width: 40px;
+  height: 40px;
+}
+
+.cursor--open .cursor__ring {
+  width: 56px;
+  height: 56px;
+}
+
+.cursor__label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.cursor--open .cursor__label {
+  opacity: 1;
+}
+
+/* Only opt-in elements lose the native cursor. */
+[data-cursor],
+[data-cursor] * {
+  cursor: none;
+}
+
+@media (hover: none) {
+  .cursor {
+    display: none;
+  }
+
+  [data-cursor],
+  [data-cursor] * {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor__ring,
+  .cursor__label {
+    transition: none;
+  }
+}

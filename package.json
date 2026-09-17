@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "art": "node scripts/gen-art.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
